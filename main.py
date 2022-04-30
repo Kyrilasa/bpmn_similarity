@@ -10,6 +10,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 from itertools import product
+from igraph import Plot
 
 helper_dict = dict()
 
@@ -104,7 +105,7 @@ def modular_product_graph(G: ig.Graph, H: ig.Graph) -> ig.Graph:
     return igraph_format
 
 if __name__ == "__main__":
-    filename = './data/model_1.bpmn'
+    filename = './data/model_2.bpmn'
     filename2 = './data/model_4.bpmn'
     bpmnObject = BpmnGraphParser(filename)
     bpmnObject2 = BpmnGraphParser(filename2)
@@ -131,11 +132,26 @@ if __name__ == "__main__":
     end = timer()
     print(f"Elapsed time: {end - start}")
 
-
     max_clique = max(C_4, key=lambda clique: len(clique))
-    print(max_clique)
-    # layout = g2.layout("auto")
-    # ig.plot(g2, layout=layout)
-    # layout = mod.layout("grid")
-    # ig.plot(mod, layout=layout, margin=100)
-    
+
+    for vertex_id in max_clique:
+        first_graph_id = MODULAR_PRODUCT_GRAPH.vs[vertex_id]['id'][0]
+        second_graph_id = MODULAR_PRODUCT_GRAPH.vs[vertex_id]['id'][1]
+        # print(MODULAR_PRODUCT_GRAPH.vs[vertex_id])
+        # print(list(g.vs))
+        g.vs[first_graph_id]['color'] = 'blue' 
+        g2.vs[second_graph_id]['color'] = 'blue'      
+
+    shape = (1, 1)
+    colsep, rowsep = 70, 70
+    width, height = 200, 200
+
+    # Construct the plot
+    plot = Plot("plot.png", bbox=(4*width, 4*height), background="white")
+
+    # Create the graph and add it to the plot
+    plot.add(g, bbox=(colsep/2, rowsep/2, -colsep/2 + width*(2), -rowsep/2 + height*(2)))
+    plot.add(g2, bbox=(colsep/2, rowsep/2 + height*(3), -colsep/2 + width*(3), -rowsep/2 + height*(2)))
+    plot.redraw()
+
+    plot.show()
