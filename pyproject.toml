@@ -10,6 +10,8 @@ SpiffWorkflow = "^1.1.6"
 igraph = "^0.9.10"
 networkx = "^2.8"
 pycairo = "^1.21.0"
+matplotlib = "^3.5.1"
+tqdm = "^4.64.0"
 
 [tool.poetry.dev-dependencies]
 

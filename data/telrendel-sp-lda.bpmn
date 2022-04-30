@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_M6GbAKh_EDqc0rNJdXnW2A" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:process id="telrendel_sp_lda" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false" name="telrendel-sp-lda" isExecutable="true" processType="Public">
+    <bpmn2:sequenceFlow id="Flow_0fl4o6t" drools:priority="21" name="Nem" sourceRef="Gateway_1xcemro" targetRef="Activity_1fdrt8v">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Nem]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[x < 10]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_06zwd6q" name="Igen" sourceRef="Gateway_1xcemro" targetRef="Event_0s0oap0">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Igen]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[x > 10]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_18cp43s" name="Túl hosszú?" sourceRef="Activity_19etb9m" targetRef="Gateway_1xcemro">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Túl hosszú?]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="Flow_1d2i7j6" sourceRef="Activity_01nkcwy" targetRef="Activity_19etb9m"/>
+    <bpmn2:sequenceFlow id="Flow_0txhs58" sourceRef="StartEvent_1" targetRef="Activity_01nkcwy"/>
+    <bpmn2:sequenceFlow id="Flow_0ys6djt" sourceRef="Activity_1fdrt8v" targetRef="Activity_01lgxw2"/>
+    <bpmn2:sequenceFlow id="Flow_0u6qms5" sourceRef="Activity_01lgxw2" targetRef="Activity_0wapcdp"/>
+    <bpmn2:sequenceFlow id="Flow_0li4w28" sourceRef="Activity_0drj9uf" targetRef="Event_1omy6wo"/>
+    <bpmn2:sequenceFlow id="Flow_07cethr" sourceRef="Activity_0wapcdp" targetRef="Activity_0drj9uf"/>
+    <bpmn2:startEvent id="StartEvent_1" name="Esemény">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Esemény]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>Flow_0txhs58</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:task id="Activity_1fdrt8v" name="Rendelés">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Rendelés]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_0fl4o6t</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_0ys6djt</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:exclusiveGateway id="Gateway_1xcemro" drools:dg="Flow_06zwd6q" gatewayDirection="Diverging" default="Flow_06zwd6q">
+      <bpmn2:incoming>Flow_18cp43s</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_06zwd6q</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_0fl4o6t</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:endEvent id="Event_0s0oap0">
+      <bpmn2:incoming>Flow_06zwd6q</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:task id="Activity_19etb9m" name="Várakozási idő">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Várakozási idő]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_1d2i7j6</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_18cp43s</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Activity_01nkcwy" name="Éterem felhívása">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Éterem felhívása]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_0txhs58</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_1d2i7j6</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:endEvent id="Event_1omy6wo">
+      <bpmn2:incoming>Flow_0li4w28</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:task id="Activity_01lgxw2" name="Rendelés átvétele">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Rendelés átvétele]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_0ys6djt</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_0u6qms5</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Activity_0wapcdp" name="Rendelés kifizetése">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Rendelés kifizetése]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_0u6qms5</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_07cethr</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="Activity_0drj9uf" name="Étel elfogyasztása">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Étel elfogyasztása]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_07cethr</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_0li4w28</bpmn2:outgoing>
+    </bpmn2:task>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="telrendel_sp_lda">
+      <bpmndi:BPMNShape id="shape_Activity_0drj9uf" bpmnElement="Activity_0drj9uf">
+        <dc:Bounds height="80" width="100" x="1430" y="170"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Activity_0wapcdp" bpmnElement="Activity_0wapcdp">
+        <dc:Bounds height="80" width="100" x="1270" y="170"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Activity_01lgxw2" bpmnElement="Activity_01lgxw2">
+        <dc:Bounds height="80" width="100" x="1120" y="170"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Event_1omy6wo" bpmnElement="Event_1omy6wo">
+        <dc:Bounds height="56" width="56" x="1602" y="192"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Activity_01nkcwy" bpmnElement="Activity_01nkcwy">
+        <dc:Bounds height="80" width="100" x="330" y="170"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Activity_19etb9m" bpmnElement="Activity_19etb9m">
+        <dc:Bounds height="80" width="100" x="490" y="170"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Event_0s0oap0" bpmnElement="Event_0s0oap0">
+        <dc:Bounds height="56" width="56" x="702" y="92"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Gateway_1xcemro" bpmnElement="Gateway_1xcemro">
+        <dc:Bounds height="56" width="56" x="695" y="185"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_Activity_1fdrt8v" bpmnElement="Activity_1fdrt8v">
+        <dc:Bounds height="80" width="100" x="860" y="170"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_StartEvent_1" bpmnElement="StartEvent_1">
+        <dc:Bounds height="56" width="56" x="210" y="192"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape_Activity_0wapcdp_to_shape_Activity_0drj9uf" bpmnElement="Flow_07cethr">
+        <di:waypoint x="1370" y="210"/>
+        <di:waypoint x="1430" y="210"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Activity_0drj9uf_to_shape_Event_1omy6wo" bpmnElement="Flow_0li4w28">
+        <di:waypoint x="1530" y="210"/>
+        <di:waypoint x="1602" y="210"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Activity_01lgxw2_to_shape_Activity_0wapcdp" bpmnElement="Flow_0u6qms5">
+        <di:waypoint x="1220" y="210"/>
+        <di:waypoint x="1270" y="210"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Activity_1fdrt8v_to_shape_Activity_01lgxw2" bpmnElement="Flow_0ys6djt">
+        <di:waypoint x="960" y="210"/>
+        <di:waypoint x="1120" y="210"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_StartEvent_1_to_shape_Activity_01nkcwy" bpmnElement="Flow_0txhs58">
+        <di:waypoint x="246" y="210"/>
+        <di:waypoint x="330" y="210"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Activity_01nkcwy_to_shape_Activity_19etb9m" bpmnElement="Flow_1d2i7j6">
+        <di:waypoint x="430" y="210"/>
+        <di:waypoint x="490" y="210"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Activity_19etb9m_to_shape_Gateway_1xcemro" bpmnElement="Flow_18cp43s">
+        <di:waypoint x="590" y="210"/>
+        <di:waypoint x="695" y="210"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_1xcemro_to_shape_Event_0s0oap0" bpmnElement="Flow_06zwd6q">
+        <di:waypoint x="720" y="185"/>
+        <di:waypoint x="720" y="128"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_Gateway_1xcemro_to_shape_Activity_1fdrt8v" bpmnElement="Flow_0fl4o6t">
+        <di:waypoint x="745" y="210"/>
+        <di:waypoint x="860" y="210"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters/>
+          <bpsim:ElementParameters elementRef="Activity_0drj9uf">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Activity_0wapcdp">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Activity_01lgxw2">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Activity_01nkcwy">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Activity_19etb9m">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="Activity_1fdrt8v">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="StartEvent_1">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_M6GbAKh_EDqc0rNJdXnW2A</bpmn2:source>
+    <bpmn2:target>_M6GbAKh_EDqc0rNJdXnW2A</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>

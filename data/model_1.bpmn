@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definitions_448bcc0a-54f4-4505-b200-4927f42c26f3" targetNamespace="http://plg.processmining.it/" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="Process 24">
+    <task id="element3072" name="Activity P">
+      <incoming>element3066-element3072</incoming>
+      <outgoing>element3072-element3067</outgoing>
+    </task>
+    <task id="element3075" name="Activity Q">
+      <incoming>element3066-element3075</incoming>
+      <outgoing>element3075-element3067</outgoing>
+    </task>
+    <task id="element3080" name="Activity R">
+      <incoming>element3068-element3080</incoming>
+      <outgoing>element3080-element3081</outgoing>
+    </task>
+    <parallelGateway id="element3081">
+      <incoming>element3080-element3081</incoming>
+      <outgoing>element3081-element3084</outgoing>
+      <outgoing>element3081-element3088</outgoing>
+    </parallelGateway>
+    <parallelGateway id="element3082">
+      <incoming>element3084-element3082</incoming>
+      <incoming>element3088-element3082</incoming>
+      <outgoing>element3082-element3083</outgoing>
+    </parallelGateway>
+    <task id="element3083" name="Activity S">
+      <incoming>element3082-element3083</incoming>
+      <outgoing>element3083-element3094</outgoing>
+    </task>
+    <task id="element3084" name="Activity T">
+      <incoming>element3081-element3084</incoming>
+      <outgoing>element3084-element3082</outgoing>
+    </task>
+    <task id="element3088" name="Activity U">
+      <incoming>element3081-element3088</incoming>
+      <outgoing>element3088-element3082</outgoing>
+    </task>
+    <task id="element3094" name="Activity V">
+      <incoming>element3083-element3094</incoming>
+      <outgoing>element3094-element3036</outgoing>
+    </task>
+    <startEvent id="element3032" name="Start">
+      <outgoing>element3032-element3034</outgoing>
+    </startEvent>
+    <endEvent id="element3033" name="End">
+      <incoming>element3037-element3033</incoming>
+    </endEvent>
+    <task id="element3034" name="Activity A">
+      <incoming>element3032-element3034</incoming>
+      <outgoing>element3034-element3035</outgoing>
+    </task>
+    <parallelGateway id="element3035">
+      <incoming>element3034-element3035</incoming>
+      <outgoing>element3035-element3065</outgoing>
+      <outgoing>element3035-element3038</outgoing>
+    </parallelGateway>
+    <parallelGateway id="element3036">
+      <incoming>element3094-element3036</incoming>
+      <incoming>element3046-element3036</incoming>
+      <outgoing>element3036-element3037</outgoing>
+    </parallelGateway>
+    <task id="element3037" name="Activity B">
+      <incoming>element3036-element3037</incoming>
+      <outgoing>element3037-element3033</outgoing>
+    </task>
+    <task id="element3038" name="Activity C">
+      <incoming>element3035-element3038</incoming>
+      <outgoing>element3038-element3039</outgoing>
+    </task>
+    <task id="element3039" name="Activity D">
+      <incoming>element3038-element3039</incoming>
+      <outgoing>element3039-element3041</outgoing>
+    </task>
+    <task id="element3041" name="Activity E">
+      <incoming>element3039-element3041</incoming>
+      <outgoing>element3041-element3043</outgoing>
+    </task>
+    <task id="element3043" name="Activity F">
+      <incoming>element3041-element3043</incoming>
+      <outgoing>element3043-element3044</outgoing>
+    </task>
+    <parallelGateway id="element3044">
+      <incoming>element3043-element3044</incoming>
+      <outgoing>element3044-element3047</outgoing>
+      <outgoing>element3044-element3052</outgoing>
+      <outgoing>element3044-element3055</outgoing>
+    </parallelGateway>
+    <parallelGateway id="element3045">
+      <incoming>element3048-element3045</incoming>
+      <incoming>element3052-element3045</incoming>
+      <incoming>element3056-element3045</incoming>
+      <outgoing>element3045-element3046</outgoing>
+    </parallelGateway>
+    <task id="element3046" name="Activity G">
+      <incoming>element3045-element3046</incoming>
+      <outgoing>element3046-element3036</outgoing>
+    </task>
+    <task id="element3047" name="Activity H">
+      <incoming>element3044-element3047</incoming>
+      <outgoing>element3047-element3048</outgoing>
+    </task>
+    <task id="element3048" name="Activity I">
+      <incoming>element3047-element3048</incoming>
+      <outgoing>element3048-element3045</outgoing>
+    </task>
+    <task id="element3052" name="Activity J">
+      <incoming>element3044-element3052</incoming>
+      <outgoing>element3052-element3045</outgoing>
+    </task>
+    <task id="element3055" name="Activity K">
+      <incoming>element3044-element3055</incoming>
+      <outgoing>element3055-element3056</outgoing>
+    </task>
+    <task id="element3056" name="Activity L">
+      <incoming>element3055-element3056</incoming>
+      <outgoing>element3056-element3045</outgoing>
+    </task>
+    <task id="element3065" name="Activity M">
+      <incoming>element3035-element3065</incoming>
+      <outgoing>element3065-element3066</outgoing>
+    </task>
+    <parallelGateway id="element3066">
+      <incoming>element3065-element3066</incoming>
+      <outgoing>element3066-element3072</outgoing>
+      <outgoing>element3066-element3075</outgoing>
+      <outgoing>element3066-element3069</outgoing>
+    </parallelGateway>
+    <parallelGateway id="element3067">
+      <incoming>element3072-element3067</incoming>
+      <incoming>element3075-element3067</incoming>
+      <incoming>element3069-element3067</incoming>
+      <outgoing>element3067-element3068</outgoing>
+    </parallelGateway>
+    <task id="element3068" name="Activity N">
+      <incoming>element3067-element3068</incoming>
+      <outgoing>element3068-element3080</outgoing>
+    </task>
+    <task id="element3069" name="Activity O">
+      <incoming>element3066-element3069</incoming>
+      <outgoing>element3069-element3067</outgoing>
+    </task>
+    <sequenceFlow id="element3066-element3072" isImmediate="true" sourceRef="element3066" targetRef="element3072"/>
+    <sequenceFlow id="element3072-element3067" isImmediate="true" sourceRef="element3072" targetRef="element3067"/>
+    <sequenceFlow id="element3066-element3075" isImmediate="true" sourceRef="element3066" targetRef="element3075"/>
+    <sequenceFlow id="element3075-element3067" isImmediate="true" sourceRef="element3075" targetRef="element3067"/>
+    <sequenceFlow id="element3065-element3066" isImmediate="true" sourceRef="element3065" targetRef="element3066"/>
+    <sequenceFlow id="element3067-element3068" isImmediate="true" sourceRef="element3067" targetRef="element3068"/>
+    <sequenceFlow id="element3081-element3084" isImmediate="true" sourceRef="element3081" targetRef="element3084"/>
+    <sequenceFlow id="element3084-element3082" isImmediate="true" sourceRef="element3084" targetRef="element3082"/>
+    <sequenceFlow id="element3081-element3088" isImmediate="true" sourceRef="element3081" targetRef="element3088"/>
+    <sequenceFlow id="element3088-element3082" isImmediate="true" sourceRef="element3088" targetRef="element3082"/>
+    <sequenceFlow id="element3080-element3081" isImmediate="true" sourceRef="element3080" targetRef="element3081"/>
+    <sequenceFlow id="element3082-element3083" isImmediate="true" sourceRef="element3082" targetRef="element3083"/>
+    <sequenceFlow id="element3068-element3080" isImmediate="true" sourceRef="element3068" targetRef="element3080"/>
+    <sequenceFlow id="element3083-element3094" isImmediate="true" sourceRef="element3083" targetRef="element3094"/>
+    <sequenceFlow id="element3035-element3065" isImmediate="true" sourceRef="element3035" targetRef="element3065"/>
+    <sequenceFlow id="element3094-element3036" isImmediate="true" sourceRef="element3094" targetRef="element3036"/>
+    <sequenceFlow id="element3034-element3035" isImmediate="true" sourceRef="element3034" targetRef="element3035"/>
+    <sequenceFlow id="element3036-element3037" isImmediate="true" sourceRef="element3036" targetRef="element3037"/>
+    <sequenceFlow id="element3032-element3034" isImmediate="true" sourceRef="element3032" targetRef="element3034"/>
+    <sequenceFlow id="element3037-element3033" isImmediate="true" sourceRef="element3037" targetRef="element3033"/>
+    <sequenceFlow id="element3038-element3039" isImmediate="true" sourceRef="element3038" targetRef="element3039"/>
+    <sequenceFlow id="element3039-element3041" isImmediate="true" sourceRef="element3039" targetRef="element3041"/>
+    <sequenceFlow id="element3047-element3048" isImmediate="true" sourceRef="element3047" targetRef="element3048"/>
+    <sequenceFlow id="element3044-element3047" isImmediate="true" sourceRef="element3044" targetRef="element3047"/>
+    <sequenceFlow id="element3048-element3045" isImmediate="true" sourceRef="element3048" targetRef="element3045"/>
+    <sequenceFlow id="element3044-element3052" isImmediate="true" sourceRef="element3044" targetRef="element3052"/>
+    <sequenceFlow id="element3052-element3045" isImmediate="true" sourceRef="element3052" targetRef="element3045"/>
+    <sequenceFlow id="element3055-element3056" isImmediate="true" sourceRef="element3055" targetRef="element3056"/>
+    <sequenceFlow id="element3044-element3055" isImmediate="true" sourceRef="element3044" targetRef="element3055"/>
+    <sequenceFlow id="element3056-element3045" isImmediate="true" sourceRef="element3056" targetRef="element3045"/>
+    <sequenceFlow id="element3043-element3044" isImmediate="true" sourceRef="element3043" targetRef="element3044"/>
+    <sequenceFlow id="element3045-element3046" isImmediate="true" sourceRef="element3045" targetRef="element3046"/>
+    <sequenceFlow id="element3041-element3043" isImmediate="true" sourceRef="element3041" targetRef="element3043"/>
+    <sequenceFlow id="element3035-element3038" isImmediate="true" sourceRef="element3035" targetRef="element3038"/>
+    <sequenceFlow id="element3046-element3036" isImmediate="true" sourceRef="element3046" targetRef="element3036"/>
+    <sequenceFlow id="element3066-element3069" isImmediate="true" sourceRef="element3066" targetRef="element3069"/>
+    <sequenceFlow id="element3069-element3067" isImmediate="true" sourceRef="element3069" targetRef="element3067"/>
+  </process>
+  <bpmndi:BPMNDiagram documentation="bpmn diagram element" id="diagram" name="diagram" resolution="120.0">
+    <bpmndi:BPMNPlane bpmnElement="Process 24" id="plane">
+      <bpmndi:BPMNShape bpmnElement="element3072" id="shape3072">
+        <dc:Bounds height="30.0" width="80.0" x="554.0" y="15.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3075" id="shape3075">
+        <dc:Bounds height="30.0" width="80.0" x="554.0" y="75.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3080" id="shape3080">
+        <dc:Bounds height="30.0" width="80.0" x="934.0" y="15.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3081" id="shape3081">
+        <dc:Bounds height="30.0" width="30.0" x="1144.0" y="0.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3082" id="shape3082">
+        <dc:Bounds height="30.0" width="30.0" x="1459.0" y="72.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3083" id="shape3083">
+        <dc:Bounds height="30.0" width="80.0" x="1564.0" y="82.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3084" id="shape3084">
+        <dc:Bounds height="30.0" width="80.0" x="1304.0" y="97.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3088" id="shape3088">
+        <dc:Bounds height="30.0" width="80.0" x="1304.0" y="37.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3094" id="shape3094">
+        <dc:Bounds height="30.0" width="80.0" x="1694.0" y="90.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3032" id="shape3032">
+        <dc:Bounds height="20.0" width="20.0" x="7.0" y="100.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3033" id="shape3033">
+        <dc:Bounds height="20.0" width="20.0" x="2037.0" y="102.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3034" id="shape3034">
+        <dc:Bounds height="30.0" width="80.0" x="84.0" y="105.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3035" id="shape3035">
+        <dc:Bounds height="30.0" width="30.0" x="214.0" y="105.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3036" id="shape3036">
+        <dc:Bounds height="30.0" width="30.0" x="1824.0" y="109.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3037" id="shape3037">
+        <dc:Bounds height="30.0" width="80.0" x="1904.0" y="107.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3038" id="shape3038">
+        <dc:Bounds height="30.0" width="80.0" x="294.0" y="135.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3039" id="shape3039">
+        <dc:Bounds height="30.0" width="80.0" x="424.0" y="165.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3041" id="shape3041">
+        <dc:Bounds height="30.0" width="80.0" x="554.0" y="195.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3043" id="shape3043">
+        <dc:Bounds height="30.0" width="70.0" x="684.0" y="168.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3044" id="shape3044">
+        <dc:Bounds height="30.0" width="30.0" x="829.0" y="142.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3045" id="shape3045">
+        <dc:Bounds height="30.0" width="30.0" x="1329.0" y="161.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3046" id="shape3046">
+        <dc:Bounds height="30.0" width="80.0" x="1434.0" y="150.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3047" id="shape3047">
+        <dc:Bounds height="30.0" width="80.0" x="934.0" y="75.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3048" id="shape3048">
+        <dc:Bounds height="30.0" width="70.0" x="1124.0" y="120.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3052" id="shape3052">
+        <dc:Bounds height="30.0" width="70.0" x="939.0" y="135.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3055" id="shape3055">
+        <dc:Bounds height="30.0" width="80.0" x="934.0" y="195.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3056" id="shape3056">
+        <dc:Bounds height="30.0" width="70.0" x="1124.0" y="210.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3065" id="shape3065">
+        <dc:Bounds height="30.0" width="80.0" x="294.0" y="75.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3066" id="shape3066">
+        <dc:Bounds height="30.0" width="30.0" x="449.0" y="75.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3067" id="shape3067">
+        <dc:Bounds height="30.0" width="30.0" x="704.0" y="67.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3068" id="shape3068">
+        <dc:Bounds height="30.0" width="80.0" x="804.0" y="41.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="element3069" id="shape3069">
+        <dc:Bounds height="30.0" width="80.0" x="554.0" y="135.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="element3066-element3072" id="flowEdgeelement3066-element3072">
+        <di:waypoint x="479.0" y="80.0"/>
+        <di:waypoint x="516.0" y="80.0"/>
+        <di:waypoint x="542.0" y="30.0"/>
+        <di:waypoint x="554.0" y="30.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3072-element3067" id="flowEdgeelement3072-element3067">
+        <di:waypoint x="634.0" y="30.0"/>
+        <di:waypoint x="646.0" y="30.0"/>
+        <di:waypoint x="672.0" y="72.0"/>
+        <di:waypoint x="704.0" y="72.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3066-element3075" id="flowEdgeelement3066-element3075">
+        <di:waypoint x="479.0" y="90.0"/>
+        <di:waypoint x="518.0" y="90.0"/>
+        <di:waypoint x="542.0" y="90.0"/>
+        <di:waypoint x="554.0" y="90.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3075-element3067" id="flowEdgeelement3075-element3067">
+        <di:waypoint x="634.0" y="90.0"/>
+        <di:waypoint x="646.0" y="90.0"/>
+        <di:waypoint x="670.0" y="82.0"/>
+        <di:waypoint x="704.0" y="82.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3065-element3066" id="flowEdgeelement3065-element3066">
+        <di:waypoint x="374.0" y="90.0"/>
+        <di:waypoint x="386.0" y="90.0"/>
+        <di:waypoint x="412.0" y="90.0"/>
+        <di:waypoint x="449.0" y="90.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3067-element3068" id="flowEdgeelement3067-element3068">
+        <di:waypoint x="734.0" y="82.0"/>
+        <di:waypoint x="766.0" y="82.0"/>
+        <di:waypoint x="792.0" y="56.0"/>
+        <di:waypoint x="804.0" y="56.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3081-element3084" id="flowEdgeelement3081-element3084">
+        <di:waypoint x="1174.0" y="20.0"/>
+        <di:waypoint x="1266.0" y="20.0"/>
+        <di:waypoint x="1292.0" y="107.0"/>
+        <di:waypoint x="1304.0" y="107.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3084-element3082" id="flowEdgeelement3084-element3082">
+        <di:waypoint x="1384.0" y="112.0"/>
+        <di:waypoint x="1396.0" y="112.0"/>
+        <di:waypoint x="1422.0" y="92.0"/>
+        <di:waypoint x="1459.0" y="92.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3081-element3088" id="flowEdgeelement3081-element3088">
+        <di:waypoint x="1174.0" y="10.0"/>
+        <di:waypoint x="1266.0" y="10.0"/>
+        <di:waypoint x="1292.0" y="52.0"/>
+        <di:waypoint x="1304.0" y="52.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3088-element3082" id="flowEdgeelement3088-element3082">
+        <di:waypoint x="1384.0" y="52.0"/>
+        <di:waypoint x="1396.0" y="52.0"/>
+        <di:waypoint x="1422.0" y="82.0"/>
+        <di:waypoint x="1459.0" y="82.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3080-element3081" id="flowEdgeelement3080-element3081">
+        <di:waypoint x="1014.0" y="30.0"/>
+        <di:waypoint x="1026.0" y="30.0"/>
+        <di:waypoint x="1052.0" y="15.0"/>
+        <di:waypoint x="1144.0" y="15.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3082-element3083" id="flowEdgeelement3082-element3083">
+        <di:waypoint x="1489.0" y="87.0"/>
+        <di:waypoint x="1526.0" y="87.0"/>
+        <di:waypoint x="1552.0" y="97.0"/>
+        <di:waypoint x="1564.0" y="97.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3068-element3080" id="flowEdgeelement3068-element3080">
+        <di:waypoint x="884.0" y="56.0"/>
+        <di:waypoint x="896.0" y="56.0"/>
+        <di:waypoint x="922.0" y="30.0"/>
+        <di:waypoint x="934.0" y="30.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3083-element3094" id="flowEdgeelement3083-element3094">
+        <di:waypoint x="1644.0" y="97.0"/>
+        <di:waypoint x="1656.0" y="97.0"/>
+        <di:waypoint x="1682.0" y="105.0"/>
+        <di:waypoint x="1694.0" y="105.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3035-element3065" id="flowEdgeelement3035-element3065">
+        <di:waypoint x="244.0" y="115.0"/>
+        <di:waypoint x="256.0" y="115.0"/>
+        <di:waypoint x="282.0" y="90.0"/>
+        <di:waypoint x="294.0" y="90.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3094-element3036" id="flowEdgeelement3094-element3036">
+        <di:waypoint x="1774.0" y="105.0"/>
+        <di:waypoint x="1786.0" y="105.0"/>
+        <di:waypoint x="1812.0" y="119.0"/>
+        <di:waypoint x="1824.0" y="119.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3034-element3035" id="flowEdgeelement3034-element3035">
+        <di:waypoint x="164.0" y="120.0"/>
+        <di:waypoint x="176.0" y="120.0"/>
+        <di:waypoint x="202.0" y="120.0"/>
+        <di:waypoint x="214.0" y="120.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3036-element3037" id="flowEdgeelement3036-element3037">
+        <di:waypoint x="1854.0" y="124.0"/>
+        <di:waypoint x="1866.0" y="124.0"/>
+        <di:waypoint x="1892.0" y="122.0"/>
+        <di:waypoint x="1904.0" y="122.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3032-element3034" id="flowEdgeelement3032-element3034">
+        <di:waypoint x="27.0" y="120.0"/>
+        <di:waypoint x="46.0" y="120.0"/>
+        <di:waypoint x="72.0" y="120.0"/>
+        <di:waypoint x="84.0" y="120.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3037-element3033" id="flowEdgeelement3037-element3033">
+        <di:waypoint x="1984.0" y="122.0"/>
+        <di:waypoint x="1996.0" y="122.0"/>
+        <di:waypoint x="2022.0" y="122.0"/>
+        <di:waypoint x="2038.0" y="122.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3038-element3039" id="flowEdgeelement3038-element3039">
+        <di:waypoint x="374.0" y="150.0"/>
+        <di:waypoint x="386.0" y="150.0"/>
+        <di:waypoint x="412.0" y="180.0"/>
+        <di:waypoint x="424.0" y="180.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3039-element3041" id="flowEdgeelement3039-element3041">
+        <di:waypoint x="504.0" y="180.0"/>
+        <di:waypoint x="516.0" y="180.0"/>
+        <di:waypoint x="542.0" y="210.0"/>
+        <di:waypoint x="554.0" y="210.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3047-element3048" id="flowEdgeelement3047-element3048">
+        <di:waypoint x="1014.0" y="90.0"/>
+        <di:waypoint x="1026.0" y="90.0"/>
+        <di:waypoint x="1052.0" y="135.0"/>
+        <di:waypoint x="1124.0" y="135.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3044-element3047" id="flowEdgeelement3044-element3047">
+        <di:waypoint x="859.0" y="147.0"/>
+        <di:waypoint x="896.0" y="147.0"/>
+        <di:waypoint x="922.0" y="90.0"/>
+        <di:waypoint x="934.0" y="90.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3048-element3045" id="flowEdgeelement3048-element3045">
+        <di:waypoint x="1194.0" y="135.0"/>
+        <di:waypoint x="1266.0" y="135.0"/>
+        <di:waypoint x="1292.0" y="166.0"/>
+        <di:waypoint x="1329.0" y="166.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3044-element3052" id="flowEdgeelement3044-element3052">
+        <di:waypoint x="859.0" y="157.0"/>
+        <di:waypoint x="898.0" y="157.0"/>
+        <di:waypoint x="922.0" y="150.0"/>
+        <di:waypoint x="939.0" y="150.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3052-element3045" id="flowEdgeelement3052-element3045">
+        <di:waypoint x="1009.0" y="150.0"/>
+        <di:waypoint x="1026.0" y="150.0"/>
+        <di:waypoint x="1039.0" y="180.0"/>
+        <di:waypoint x="1279.0" y="180.0"/>
+        <di:waypoint x="1290.0" y="176.0"/>
+        <di:waypoint x="1329.0" y="176.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3055-element3056" id="flowEdgeelement3055-element3056">
+        <di:waypoint x="1014.0" y="210.0"/>
+        <di:waypoint x="1026.0" y="210.0"/>
+        <di:waypoint x="1052.0" y="225.0"/>
+        <di:waypoint x="1124.0" y="225.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3044-element3055" id="flowEdgeelement3044-element3055">
+        <di:waypoint x="859.0" y="167.0"/>
+        <di:waypoint x="896.0" y="167.0"/>
+        <di:waypoint x="922.0" y="210.0"/>
+        <di:waypoint x="934.0" y="210.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3056-element3045" id="flowEdgeelement3056-element3045">
+        <di:waypoint x="1194.0" y="225.0"/>
+        <di:waypoint x="1266.0" y="225.0"/>
+        <di:waypoint x="1292.0" y="186.0"/>
+        <di:waypoint x="1329.0" y="186.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3043-element3044" id="flowEdgeelement3043-element3044">
+        <di:waypoint x="754.0" y="183.0"/>
+        <di:waypoint x="766.0" y="183.0"/>
+        <di:waypoint x="792.0" y="157.0"/>
+        <di:waypoint x="829.0" y="157.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3045-element3046" id="flowEdgeelement3045-element3046">
+        <di:waypoint x="1359.0" y="176.0"/>
+        <di:waypoint x="1396.0" y="176.0"/>
+        <di:waypoint x="1422.0" y="165.0"/>
+        <di:waypoint x="1434.0" y="165.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3041-element3043" id="flowEdgeelement3041-element3043">
+        <di:waypoint x="634.0" y="210.0"/>
+        <di:waypoint x="646.0" y="210.0"/>
+        <di:waypoint x="672.0" y="183.0"/>
+        <di:waypoint x="684.0" y="183.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3035-element3038" id="flowEdgeelement3035-element3038">
+        <di:waypoint x="244.0" y="125.0"/>
+        <di:waypoint x="256.0" y="125.0"/>
+        <di:waypoint x="282.0" y="150.0"/>
+        <di:waypoint x="294.0" y="150.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3046-element3036" id="flowEdgeelement3046-element3036">
+        <di:waypoint x="1514.0" y="165.0"/>
+        <di:waypoint x="1526.0" y="165.0"/>
+        <di:waypoint x="1539.0" y="157.0"/>
+        <di:waypoint x="1669.0" y="157.0"/>
+        <di:waypoint x="1669.0" y="157.0"/>
+        <di:waypoint x="1799.0" y="157.0"/>
+        <di:waypoint x="1812.0" y="129.0"/>
+        <di:waypoint x="1824.0" y="129.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3066-element3069" id="flowEdgeelement3066-element3069">
+        <di:waypoint x="479.0" y="100.0"/>
+        <di:waypoint x="516.0" y="100.0"/>
+        <di:waypoint x="542.0" y="150.0"/>
+        <di:waypoint x="554.0" y="150.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="element3069-element3067" id="flowEdgeelement3069-element3067">
+        <di:waypoint x="634.0" y="150.0"/>
+        <di:waypoint x="646.0" y="150.0"/>
+        <di:waypoint x="672.0" y="92.0"/>
+        <di:waypoint x="704.0" y="92.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
