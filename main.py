@@ -7,22 +7,36 @@ from timeit import default_timer as timer
 
 import igraph as ig
 import networkx as nx
-import matplotlib.pyplot as plt
 from tqdm import tqdm
 from itertools import product
 from igraph import Plot
+import igraph as ig
 
 helper_dict = dict()
 
+def color(G, P: set):
+    colorClasses = []
+
+    while P:
+        current = set()
+        for v in P:
+            if helper_dict.get(G.vs[v]) is None:
+                helper_dict[G.vs[v]] = set(G.neighbors(G.vs[v]))
+            if not current.intersection(helper_dict[G.vs[v]]):
+                current.add(v)
+        P = P.difference(current)
+        colorClasses += [current]
+
+    return colorClasses
 
 def bronker_bosch1(M, clique, candidates, excluded, C):
-    global bk1_counter
-    bk1_counter += 1
     if not candidates and not excluded:
         C += [clique]
         return
     for v in list(candidates):
-        v_neighbors = set(M.neighbors(M.vs[v]))
+        if helper_dict.get(M.vs[v]) is None:
+            helper_dict[M.vs[v]] = set(M.neighbors(M.vs[v]))
+        v_neighbors = helper_dict[M.vs[v]]
         new_candidates = candidates.intersection(v_neighbors)
         new_excluded = excluded.intersection(v_neighbors)
         bronker_bosch1(M, clique + [v], new_candidates, new_excluded, C)
@@ -52,6 +66,26 @@ def bronker_bosch2(M, clique: set, candidates, excluded, C):
         excluded.add(v)
     return C
 
+def branch_and_bound(M, clique: list, candidates: set, C: list):
+    colorClasses = color(M, candidates)
+    while (cclasses:=len(colorClasses)) != 0:
+        colorClass = colorClasses[0]
+        for v in colorClass:
+            cliqlen = len(clique)
+            clen = len(C)
+            if cliqlen + cclasses <= clen:
+                return
+
+            if helper_dict.get(M.vs[v]) is None:
+                helper_dict[M.vs[v]] = set(M.neighbors(M.vs[v]))
+            P1 = candidates.intersection(helper_dict[M.vs[v]])
+            clique.append(v)
+            if cliqlen > clen:
+                C = clique.copy()
+            if len(P1) != 0:
+                branch_and_bound(M, clique, P1, C)
+            clique.remove(v)
+        colorClasses.remove(colorClass)
 
 def pick_random(M, candidates: set, excluded: set):
     union = candidates.union(excluded)
@@ -104,54 +138,65 @@ def modular_product_graph(G: ig.Graph, H: ig.Graph) -> ig.Graph:
     print("Finished modular product creation.")
     return igraph_format
 
-if __name__ == "__main__":
-    filename = './data/model_2.bpmn'
-    filename2 = './data/model_4.bpmn'
-    bpmnObject = BpmnGraphParser(filename)
-    bpmnObject2 = BpmnGraphParser(filename2)
-    g = bpmnObject.get_graph()
-    g2 = bpmnObject2.get_graph()
-
-    MODULAR_PRODUCT_GRAPH = modular_product_graph(g, g2)
-    
-    # P = set([vertex.index for vertex in MODULAR_PRODUCT_GRAPH.vs()])
-    # R = []
-    # X = set()
-    # C = []
-    # start = timer()
-    # C_3 = bronker_bosch1(MODULAR_PRODUCT_GRAPH, R, P, X, C)
-    # end = timer()
-    # print(f"Elapsed time: {end - start}")
-    # print(bk1_counter)
-    P = set([vertex.index for vertex in MODULAR_PRODUCT_GRAPH.vs()])
+def get_max_clique_bk1(input_graph):
+    P = set([vertex.index for vertex in input_graph.vs()])
     R = []
     X = set()
     C = []
     start = timer()
-    C_4 = bronker_bosch2(MODULAR_PRODUCT_GRAPH, R, P, X, C)
+    C = bronker_bosch1(input_graph, R, P, X, C)
     end = timer()
-    print(f"Elapsed time: {end - start}")
+    print(f"BK1 Elapsed time(msec): {(end - start)*1000}")
+    max_clique = max(C, key=lambda clique: len(clique))
+    return max_clique
 
-    max_clique = max(C_4, key=lambda clique: len(clique))
+def get_max_clique_bk2(input_graph):
+    P = set([vertex.index for vertex in input_graph.vs()])
+    R = []
+    X = set()
+    C = []
+    start = timer()
+    C = bronker_bosch2(input_graph, R, P, X, C)
+    end = timer()
+    print(f"BK2 Elapsed time(msec): {(end - start)*1000}")
+    max_clique = max(C, key=lambda clique: len(clique))
+    return max_clique
 
-    for vertex_id in max_clique:
-        first_graph_id = MODULAR_PRODUCT_GRAPH.vs[vertex_id]['id'][0]
-        second_graph_id = MODULAR_PRODUCT_GRAPH.vs[vertex_id]['id'][1]
-        # print(MODULAR_PRODUCT_GRAPH.vs[vertex_id])
-        # print(list(g.vs))
-        g.vs[first_graph_id]['color'] = 'blue' 
-        g2.vs[second_graph_id]['color'] = 'blue'      
+def visualize_similarity(graph_candidate_one, graph_candidate_two, modular_product, max_clique_in_product, save_as_png=False):
+    for vertex_id in max_clique_in_product:
+        first_graph_id = modular_product.vs[vertex_id]['id'][0]
+        second_graph_id = modular_product.vs[vertex_id]['id'][1]
+        graph_candidate_one.vs[first_graph_id]['color'] = 'blue' 
+        graph_candidate_two.vs[second_graph_id]['color'] = 'blue'      
 
-    shape = (1, 1)
     colsep, rowsep = 70, 70
     width, height = 200, 200
 
     # Construct the plot
-    plot = Plot("plot.png", bbox=(4*width, 4*height), background="white")
+    plot = Plot("similarity.png", bbox=(4*width, 4*height), background="white")
 
     # Create the graph and add it to the plot
-    plot.add(g, bbox=(colsep/2, rowsep/2, -colsep/2 + width*(2), -rowsep/2 + height*(2)))
-    plot.add(g2, bbox=(colsep/2, rowsep/2 + height*(3), -colsep/2 + width*(3), -rowsep/2 + height*(2)))
+    plot.add(graph_candidate_one, bbox=(colsep/2, rowsep/2, -colsep/2 + width*(2), -rowsep/2 + height*(2)))
+    plot.add(graph_candidate_two, bbox=(colsep/2, rowsep/2 + height*(3), -colsep/2 + width*(3), -rowsep/2 + height*(2)))
     plot.redraw()
 
     plot.show()
+    if save_as_png:
+        plot.save()
+
+
+if __name__ == "__main__":
+    #TODO add argparser
+    filename = './data/model_4.bpmn'
+    filename2 = './data/model_4.bpmn'
+    bpmn_candidate_one = BpmnGraphParser(filename)
+    bpmn_candidate_two = BpmnGraphParser(filename2)
+
+    graph_candidate_one = bpmn_candidate_one.get_graph()
+    graph_candidate_two = bpmn_candidate_two.get_graph()
+    MODULAR_PRODUCT_GRAPH = modular_product_graph(graph_candidate_one, graph_candidate_two)
+    # layout = MODULAR_PRODUCT_GRAPH.layout('grid')
+    # ig.plot(MODULAR_PRODUCT_GRAPH, layout=layout)
+
+    max_clique = get_max_clique_bk2(MODULAR_PRODUCT_GRAPH)
+    visualize_similarity(graph_candidate_one, graph_candidate_two, MODULAR_PRODUCT_GRAPH, max_clique)
