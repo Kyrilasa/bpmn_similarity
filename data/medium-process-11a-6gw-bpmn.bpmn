@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi_1="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_N9f2MbNKEDqiPI9lu_jA-w" targetNamespace="http://www.omg.org/bpmn20" exporter="Camunda Modeler" exporterVersion="5.0.0" camunda:diagramRelationId="ae5743ad-cfa6-41fb-be18-33ef0375762a">
+  <bpmn2:collaboration id="_0FA8AC5F-0EF0-448C-9D45-61F81C524045" name="Default Collaboration">
+    <bpmn2:participant id="_A01CF422-5AA2-4897-915E-B22A596E21DD" name="Pool Participant" processRef="medium_process_11a_6gw" />
+  </bpmn2:collaboration>
+  <bpmn2:process id="medium_process_11a_6gw" name="medium_process_11a_6gw" processType="Public" isExecutable="false" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false">
+    <bpmn2:sequenceFlow id="element1218-element1220" sourceRef="element1218" targetRef="element1220" />
+    <bpmn2:sequenceFlow id="element1220-element1221" sourceRef="element1220" targetRef="element1221" />
+    <bpmn2:sequenceFlow id="element1223-element1219" sourceRef="element1223" targetRef="element1219" />
+    <bpmn2:sequenceFlow id="element1222-element1223" sourceRef="element1222" targetRef="element1223" />
+    <bpmn2:sequenceFlow id="element1224-element1222" sourceRef="element1224" targetRef="element1222" />
+    <bpmn2:sequenceFlow id="element1221-element1224" sourceRef="element1221" targetRef="element1224" />
+    <bpmn2:sequenceFlow id="element1221-element1227" sourceRef="element1221" targetRef="element1227" />
+    <bpmn2:sequenceFlow id="element1227-element1228" sourceRef="element1227" targetRef="element1228" />
+    <bpmn2:sequenceFlow id="element1230-element1222" sourceRef="element1230" targetRef="element1222" />
+    <bpmn2:sequenceFlow id="element1229-element1230" sourceRef="element1229" targetRef="element1230" />
+    <bpmn2:sequenceFlow id="element1228-element1231" name="dcondition1" sourceRef="element1228" targetRef="element1231">
+      <bpmn2:conditionExpression xsi_1:type="bpmn2:tFormalExpression">dummy_condition</bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="element1232-element1229" sourceRef="element1232" targetRef="element1229" />
+    <bpmn2:sequenceFlow id="element1231-element1232" sourceRef="element1231" targetRef="element1232" />
+    <bpmn2:sequenceFlow id="element1228-element1236" name="dcondition" sourceRef="element1228" targetRef="element1236">
+      <bpmn2:extensionElements />
+      <bpmn2:conditionExpression xsi_1:type="bpmn2:tFormalExpression">dummy _condition</bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="element1236-element1237" sourceRef="element1236" targetRef="element1237" />
+    <bpmn2:sequenceFlow id="element1239-element1229" sourceRef="element1239" targetRef="element1229" />
+    <bpmn2:sequenceFlow id="element1238-element1239" sourceRef="element1238" targetRef="element1239" />
+    <bpmn2:sequenceFlow id="element1243-element1238" sourceRef="element1243" targetRef="element1238" />
+    <bpmn2:sequenceFlow id="element1237-element1243" sourceRef="element1237" targetRef="element1243" />
+    <bpmn2:startEvent id="element1218" name="Start">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Start</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>element1218-element1220</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:endEvent id="element1219" name="End">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>End</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1223-element1219</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:task id="element1220" name="Activity A">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity A</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1218-element1220</bpmn2:incoming>
+      <bpmn2:outgoing>element1220-element1221</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:parallelGateway id="element1221" gatewayDirection="Diverging">
+      <bpmn2:incoming>element1220-element1221</bpmn2:incoming>
+      <bpmn2:outgoing>element1221-element1227</bpmn2:outgoing>
+      <bpmn2:outgoing>element1221-element1224</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:parallelGateway id="element1222" gatewayDirection="Converging">
+      <bpmn2:incoming>element1230-element1222</bpmn2:incoming>
+      <bpmn2:incoming>element1224-element1222</bpmn2:incoming>
+      <bpmn2:outgoing>element1222-element1223</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:task id="element1223" name="Activity B">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity B</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1222-element1223</bpmn2:incoming>
+      <bpmn2:outgoing>element1223-element1219</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="element1224" name="Activity C">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity C</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1221-element1224</bpmn2:incoming>
+      <bpmn2:outgoing>element1224-element1222</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="element1227" name="Activity D">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity D</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1221-element1227</bpmn2:incoming>
+      <bpmn2:outgoing>element1227-element1228</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:exclusiveGateway id="element1228" name="gateway1" gatewayDirection="Diverging">
+      <bpmn2:extensionElements />
+      <bpmn2:incoming>element1227-element1228</bpmn2:incoming>
+      <bpmn2:outgoing>element1228-element1236</bpmn2:outgoing>
+      <bpmn2:outgoing>element1228-element1231</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:exclusiveGateway id="element1229" gatewayDirection="Converging">
+      <bpmn2:incoming>element1239-element1229</bpmn2:incoming>
+      <bpmn2:incoming>element1232-element1229</bpmn2:incoming>
+      <bpmn2:outgoing>element1229-element1230</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:task id="element1230" name="Activity E">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity E</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1229-element1230</bpmn2:incoming>
+      <bpmn2:outgoing>element1230-element1222</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="element1231" name="Activity F">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity F</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1228-element1231</bpmn2:incoming>
+      <bpmn2:outgoing>element1231-element1232</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="element1232" name="Activity G">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity G</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1231-element1232</bpmn2:incoming>
+      <bpmn2:outgoing>element1232-element1229</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="element1236" name="Activity H">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity H</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1228-element1236</bpmn2:incoming>
+      <bpmn2:outgoing>element1236-element1237</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:parallelGateway id="element1237" gatewayDirection="Diverging">
+      <bpmn2:incoming>element1236-element1237</bpmn2:incoming>
+      <bpmn2:outgoing>element1237-element1243</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_0eyjng5</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:parallelGateway id="element1238" gatewayDirection="Converging">
+      <bpmn2:incoming>element1243-element1238</bpmn2:incoming>
+      <bpmn2:incoming>Flow_165axkx</bpmn2:incoming>
+      <bpmn2:outgoing>element1238-element1239</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:task id="element1239" name="Activity I">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity I</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1238-element1239</bpmn2:incoming>
+      <bpmn2:outgoing>element1239-element1229</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="element1240" name="Activity J">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity J</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>Flow_0eyjng5</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_165axkx</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:task id="element1243" name="Activity K">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Activity K</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>element1237-element1243</bpmn2:incoming>
+      <bpmn2:outgoing>element1243-element1238</bpmn2:outgoing>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="Flow_0eyjng5" sourceRef="element1237" targetRef="element1240" />
+    <bpmn2:sequenceFlow id="Flow_165axkx" sourceRef="element1240" targetRef="element1238" />
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="medium_process_11a_6gw">
+      <bpmndi:BPMNEdge id="Flow_165axkx_di" bpmnElement="Flow_165axkx">
+        <di:waypoint x="1143" y="170" />
+        <di:waypoint x="1163" y="170" />
+        <di:waypoint x="1163" y="160" />
+        <di:waypoint x="1202" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0eyjng5_di" bpmnElement="Flow_0eyjng5">
+        <di:waypoint x="1002" y="146" />
+        <di:waypoint x="1077" y="167" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1237_to_shape_element1243" bpmnElement="element1237-element1243">
+        <di:waypoint x="1000" y="132" />
+        <di:waypoint x="1073" y="109" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1243_to_shape_element1238" bpmnElement="element1243-element1238">
+        <di:waypoint x="1147" y="100" />
+        <di:waypoint x="1210" y="100" />
+        <di:waypoint x="1210" y="112" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1238_to_shape_element1239" bpmnElement="element1238-element1239">
+        <di:waypoint x="1238" y="140" />
+        <di:waypoint x="1289" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1239_to_shape_element1229" bpmnElement="element1239-element1229">
+        <di:waypoint x="1322" y="154" />
+        <di:waypoint x="1322" y="192" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1236_to_shape_element1237" bpmnElement="element1236-element1237">
+        <di:waypoint x="907" y="140" />
+        <di:waypoint x="952" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1228_to_shape_element1236" bpmnElement="element1228-element1236">
+        <di:waypoint x="680" y="152" />
+        <di:waypoint x="680" y="140" />
+        <di:waypoint x="832" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="670" y="143" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1231_to_shape_element1232" bpmnElement="element1231-element1232">
+        <di:waypoint x="803" y="220" />
+        <di:waypoint x="866" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1232_to_shape_element1229" bpmnElement="element1232-element1229">
+        <di:waypoint x="941" y="220" />
+        <di:waypoint x="1294" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1228_to_shape_element1231" bpmnElement="element1228-element1231">
+        <di:waypoint x="680" y="208" />
+        <di:waypoint x="680" y="220" />
+        <di:waypoint x="737" y="220" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="667" y="211" width="57" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1229_to_shape_element1230" bpmnElement="element1229-element1230">
+        <di:waypoint x="1350" y="220" />
+        <di:waypoint x="1412" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1230_to_shape_element1222" bpmnElement="element1230-element1222">
+        <di:waypoint x="1487" y="220" />
+        <di:waypoint x="1562" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1227_to_shape_element1228" bpmnElement="element1227-element1228">
+        <di:waypoint x="587" y="180" />
+        <di:waypoint x="652" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1221_to_shape_element1227" bpmnElement="element1221-element1227">
+        <di:waypoint x="450" y="192" />
+        <di:waypoint x="450" y="180" />
+        <di:waypoint x="512" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1221_to_shape_element1224" bpmnElement="element1221-element1224">
+        <di:waypoint x="450" y="248" />
+        <di:waypoint x="450" y="320" />
+        <di:waypoint x="992" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1224_to_shape_element1222" bpmnElement="element1224-element1222">
+        <di:waypoint x="1067" y="320" />
+        <di:waypoint x="1590" y="320" />
+        <di:waypoint x="1590" y="248" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1222_to_shape_element1223" bpmnElement="element1222-element1223">
+        <di:waypoint x="1618" y="220" />
+        <di:waypoint x="1752" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1223_to_shape_element1219" bpmnElement="element1223-element1219">
+        <di:waypoint x="1827" y="220" />
+        <di:waypoint x="1872" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1220_to_shape_element1221" bpmnElement="element1220-element1221">
+        <di:waypoint x="352" y="220" />
+        <di:waypoint x="422" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1218_to_shape_element1220" bpmnElement="element1218-element1220">
+        <di:waypoint x="213" y="220" />
+        <di:waypoint x="277" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="shape_element1218" bpmnElement="element1218">
+        <dc:Bounds x="157" y="192" width="56" height="56" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="173" y="248" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1219" bpmnElement="element1219">
+        <dc:Bounds x="1872" y="192" width="56" height="56" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1890" y="258" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1220" bpmnElement="element1220">
+        <dc:Bounds x="277" y="206" width="75" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1221" bpmnElement="element1221">
+        <dc:Bounds x="422" y="192" width="56" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1222" bpmnElement="element1222">
+        <dc:Bounds x="1562" y="192" width="56" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1223" bpmnElement="element1223">
+        <dc:Bounds x="1752" y="206" width="75" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1224" bpmnElement="element1224">
+        <dc:Bounds x="992" y="306" width="75" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1227" bpmnElement="element1227">
+        <dc:Bounds x="512" y="166" width="75" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1228" bpmnElement="element1228" isMarkerVisible="true">
+        <dc:Bounds x="652" y="152" width="56" height="56" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="739" y="170" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1229" bpmnElement="element1229" isMarkerVisible="true">
+        <dc:Bounds x="1294" y="192" width="56" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1230" bpmnElement="element1230">
+        <dc:Bounds x="1412" y="206" width="75" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1231" bpmnElement="element1231">
+        <dc:Bounds x="737" y="206" width="66" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1232" bpmnElement="element1232">
+        <dc:Bounds x="866" y="206" width="75" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1236" bpmnElement="element1236">
+        <dc:Bounds x="832" y="126" width="75" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1237" bpmnElement="element1237">
+        <dc:Bounds x="952" y="112" width="56" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1238" bpmnElement="element1238">
+        <dc:Bounds x="1182" y="112" width="56" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1239" bpmnElement="element1239">
+        <dc:Bounds x="1289" y="126" width="66" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1240" bpmnElement="element1240">
+        <dc:Bounds x="1077" y="156" width="66" height="28" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_element1243" bpmnElement="element1243">
+        <dc:Bounds x="1072" y="86" width="75" height="28" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters />
+          <bpsim:ElementParameters elementRef="element1243">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1240">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1239">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1236">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1232">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1231">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1230">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1227">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1224">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1223">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1220">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0" />
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="element1218">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0" />
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_N9f2MbNKEDqiPI9lu_jA-w</bpmn2:source>
+    <bpmn2:target>_N9f2MbNKEDqiPI9lu_jA-w</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>

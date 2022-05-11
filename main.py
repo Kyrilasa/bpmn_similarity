@@ -11,6 +11,10 @@ from tqdm import tqdm
 from itertools import product
 from igraph import Plot
 import igraph as ig
+import os
+from statistics import mean  
+from itertools import combinations
+
 
 helper_dict = dict()
 
@@ -29,7 +33,7 @@ def color(G, P: set):
 
     return colorClasses
 
-def bronker_bosch1(M, clique, candidates, excluded, C):
+def bron_kerbosch1(M, clique, candidates, excluded, C):
     if not candidates and not excluded:
         C += [clique]
         return
@@ -39,12 +43,12 @@ def bronker_bosch1(M, clique, candidates, excluded, C):
         v_neighbors = helper_dict[M.vs[v]]
         new_candidates = candidates.intersection(v_neighbors)
         new_excluded = excluded.intersection(v_neighbors)
-        bronker_bosch1(M, clique + [v], new_candidates, new_excluded, C)
+        bron_kerbosch1(M, clique + [v], new_candidates, new_excluded, C)
         candidates.remove(v)
         excluded.add(v)
     return C
 
-def bronker_bosch2(M, clique: set, candidates, excluded, C):
+def bron_kerbosch2(M, clique: set, candidates, excluded, C):
     if not candidates and not excluded:
         C += [clique]
         return
@@ -61,7 +65,7 @@ def bronker_bosch2(M, clique: set, candidates, excluded, C):
         v_neighbors = helper_dict[M.vs[v]]
         new_candidates = candidates.intersection(v_neighbors)
         new_excluded = excluded.intersection(v_neighbors)
-        bronker_bosch2(M, clique + [v], new_candidates, new_excluded, C)
+        bron_kerbosch2(M, clique + [v], new_candidates, new_excluded, C)
         candidates.remove(v)
         excluded.add(v)
     return C
@@ -121,7 +125,6 @@ def modular_product_graph(G: ig.Graph, H: ig.Graph) -> ig.Graph:
             adjacent_in_g = (g_inner_node_one in _G.adj[g_inner_node_two])
             adjacent_in_h = (h_inner_node_one in _H.adj[h_inner_node_two])
             if adjacent_in_g and adjacent_in_h:
-                #IF MATCH TASK TYPES TOO uncomment this.
                 g_inner_node_one_type = gh_node_candidate_one['type'][0]
                 g_inner_node_two_type = gh_node_candidate_two['type'][0]
                 h_inner_node_one_type = gh_node_candidate_one['type'][1]
@@ -144,7 +147,7 @@ def get_max_clique_bk1(input_graph):
     X = set()
     C = []
     start = timer()
-    C = bronker_bosch1(input_graph, R, P, X, C)
+    C = bron_kerbosch1(input_graph, R, P, X, C)
     end = timer()
     print(f"BK1 Elapsed time(msec): {(end - start)*1000}")
     max_clique = max(C, key=lambda clique: len(clique))
@@ -156,18 +159,30 @@ def get_max_clique_bk2(input_graph):
     X = set()
     C = []
     start = timer()
-    C = bronker_bosch2(input_graph, R, P, X, C)
+    C = bron_kerbosch2(input_graph, R, P, X, C)
     end = timer()
     print(f"BK2 Elapsed time(msec): {(end - start)*1000}")
     max_clique = max(C, key=lambda clique: len(clique))
     return max_clique
 
 def visualize_similarity(graph_candidate_one, graph_candidate_two, modular_product, max_clique_in_product, save_as_png=False):
+    vertex_set1 = set()
+    vertex_set2 = set()
+
     for vertex_id in max_clique_in_product:
         first_graph_id = modular_product.vs[vertex_id]['id'][0]
         second_graph_id = modular_product.vs[vertex_id]['id'][1]
         graph_candidate_one.vs[first_graph_id]['color'] = 'blue' 
-        graph_candidate_two.vs[second_graph_id]['color'] = 'blue'      
+        graph_candidate_two.vs[second_graph_id]['color'] = 'blue'
+        vertex_set1.add(first_graph_id)
+        vertex_set2.add(second_graph_id)
+        
+    graph_candidate_one.es["color"] = ["red" if (edge.source in vertex_set1 and \
+                           edge.target in vertex_set1) else "black" \
+                 for edge in graph_candidate_one.es]
+    graph_candidate_two.es["color"] = ["red" if (edge.source in vertex_set1 and \
+                           edge.target in vertex_set1) else "black" \
+                 for edge in graph_candidate_one.es]
 
     colsep, rowsep = 70, 70
     width, height = 200, 200
@@ -187,16 +202,20 @@ def visualize_similarity(graph_candidate_one, graph_candidate_two, modular_produ
 
 if __name__ == "__main__":
     #TODO add argparser
-    filename = './data/model_4.bpmn'
-    filename2 = './data/model_4.bpmn'
-    bpmn_candidate_one = BpmnGraphParser(filename)
-    bpmn_candidate_two = BpmnGraphParser(filename2)
+    test_pairs = list(combinations(os.listdir("data/"), 2))
 
-    graph_candidate_one = bpmn_candidate_one.get_graph()
-    graph_candidate_two = bpmn_candidate_two.get_graph()
-    MODULAR_PRODUCT_GRAPH = modular_product_graph(graph_candidate_one, graph_candidate_two)
+    for test_pair in test_pairs:
+        input_1_filename, input_2_filename = test_pair
+        bpmn_one, bpmn_two = BpmnGraphParser(f"data/{input_1_filename}"), BpmnGraphParser(f"data/{input_2_filename}")
+        G, H = bpmn_one.get_graph(), bpmn_two.get_graph()
+        print(f"G fájlneve: {input_1_filename}, H fájlneve: {input_2_filename}")
+        print(f"G élszáma: {len(G.es)}, H élszáma: {len(H.es)}")
+        MODULAR_PRODUCT_GRAPH = modular_product_graph(G, H)
+        print(f"Moduláris szorzatgráf csúcsszáma: {len(MODULAR_PRODUCT_GRAPH.vs)}, átlagos szomszédszám: {mean([len(MODULAR_PRODUCT_GRAPH.neighbors(vertex)) for vertex in MODULAR_PRODUCT_GRAPH.vs])}")
+        print("-----------------------------------------------------------------------")
+
     # layout = MODULAR_PRODUCT_GRAPH.layout('grid')
     # ig.plot(MODULAR_PRODUCT_GRAPH, layout=layout)
 
-    max_clique = get_max_clique_bk2(MODULAR_PRODUCT_GRAPH)
-    visualize_similarity(graph_candidate_one, graph_candidate_two, MODULAR_PRODUCT_GRAPH, max_clique)
+    # max_clique = get_max_clique_bk2(MODULAR_PRODUCT_GRAPH)
+    # visualize_similarity(graph_candidate_one, graph_candidate_two, MODULAR_PRODUCT_GRAPH, max_clique)
