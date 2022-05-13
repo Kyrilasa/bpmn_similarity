@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 from functools import partial
 import cv2
 from igraph import Plot
-from max_clique_search import BpmnGraphParser, modular_product_graph, get_max_clique_bk2, color_similarity
+from max_clique_search import BpmnGraphParser, modular_product_graph, get_max_clique_bk2, color_similarity, get_max_clique_bk1
 from tkinter import messagebox
 
 
@@ -31,7 +31,7 @@ class Application(tk.Frame):
         self.BPMNObject = dict()
         self.GraphObject = dict()
         self.label = dict()
-
+        self.algorithm = get_max_clique_bk1
         self.create_widgets()
 
     def create_widgets(self):
@@ -77,6 +77,20 @@ class Application(tk.Frame):
         self.clear.configure( text='Clear inputs' )
         self.clear.grid(column=0, row=2, columnspan=4)
         self.clear.configure(command=self.clearInputs)
+
+
+        #toggle button
+        self.toggle_button = ttk.Button(self.frame_button, text="Bron-Kerbosch simple mode")
+        self.toggle_button.grid(column=0, row=3, columnspan=4)
+        self.toggle_button.configure(command=self.toggleCallback)
+
+    def toggleCallback(self):
+        if self.toggle_button.config('text')[-1] == 'Bron-Kerbosch simple mode':
+            self.toggle_button.config(text='Bron-Kerbosch with pivot')
+            self.algorithm = get_max_clique_bk2
+        else:
+            self.toggle_button.config(text='Bron-Kerbosch simple mode')
+            self.algorithm = get_max_clique_bk1
 
     # Event Call Back
     def loadBPMN(self, canvas):
@@ -131,16 +145,18 @@ class Application(tk.Frame):
         self.start['state'] = DISABLED
         G, H = self.GraphObject.values()
         MODULAR_PRODUCT_GRAPH = modular_product_graph(G, H)
-        signal.alarm(10)
-        max_clique = get_max_clique_bk2(MODULAR_PRODUCT_GRAPH)
-        signal.alarm(0)
-        color_similarity(MODULAR_PRODUCT_GRAPH, max_clique, G, H)
+        # signal.alarm(10)
+        max_clique = self.algorithm(MODULAR_PRODUCT_GRAPH)
+        # signal.alarm(0)
+        if max_clique:
+            common_edge_count = color_similarity(MODULAR_PRODUCT_GRAPH, max_clique, G, H)
+            print(f"Talált maximimum klikk élszáma: {common_edge_count}")
 
-        for canvas in self.GraphObject:
-            plot = Plot("tmp.png", background="white")
-            plot.add(self.GraphObject[canvas], margin = 100)
-            plot.save()
-            self.loadImage(canvas)
+            for canvas in self.GraphObject:
+                plot = Plot("tmp.png", background="white")
+                plot.add(self.GraphObject[canvas], margin = 100)
+                plot.save()
+                self.loadImage(canvas)
         self.start['state'] = NORMAL
 
     def quit_app(self):
