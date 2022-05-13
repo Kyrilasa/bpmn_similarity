@@ -15,7 +15,7 @@ import signal
 from statistics import mean  
 from itertools import combinations
 import argparse
-
+import timeit
 
 parser = argparse.ArgumentParser(description='BPMN similarity exhaustive search')
 parser.add_argument('timeout', type=int, help='Give the timeout in seconds(!), defaults to 10 minutes.', default=600)
@@ -32,9 +32,9 @@ signal.signal(signal.SIGALRM, signal_handler)
 
 helper_dict = dict()
 
-def bron_kerbosch1(M, clique, candidates, excluded, C):
+def bron_kerbosch1(M, clique, candidates, excluded):
     if not candidates and not excluded:
-        C += [clique]
+        yield clique
         return
     for v in list(candidates):
         if helper_dict.get(M.vs[v]) is None:
@@ -42,25 +42,21 @@ def bron_kerbosch1(M, clique, candidates, excluded, C):
         v_neighbors = helper_dict[M.vs[v]]
         new_candidates = candidates.intersection(v_neighbors)
         new_excluded = excluded.intersection(v_neighbors)
-        bron_kerbosch1(M, clique + [v], new_candidates, new_excluded, C)
+        yield from bron_kerbosch1(M, clique + [v], new_candidates, new_excluded)
         candidates.remove(v)
         excluded.add(v)
-    return C
 
-def bron_kerbosch2(M, clique: set, candidates, excluded):
+def bron_kerbosch2(M, clique, candidates, excluded):
     if not candidates and not excluded:
         yield clique
         return
- 
     pivot = pick_random(M, candidates, excluded)
     if helper_dict.get(M.vs[pivot]) is None:
         helper_dict[M.vs[pivot]] = set(M.neighbors(M.vs[pivot]))
-
     p = candidates.difference(helper_dict[M.vs[pivot]])
     for v in list(p):
         if helper_dict.get(M.vs[v]) is None:
             helper_dict[M.vs[v]] = set(M.neighbors(M.vs[v]))
-
         v_neighbors = helper_dict[M.vs[v]]
         new_candidates = candidates.intersection(v_neighbors)
         new_excluded = excluded.intersection(v_neighbors)
@@ -125,7 +121,7 @@ def modular_product_graph(G: ig.Graph, H: ig.Graph) -> ig.Graph:
     print("Finished modular product creation.")
     return igraph_format
 
-def get_max_clique_bk1(input_graph, timeout_sec=600):
+def get_max_clique_bk1(input_graph, debug=False):
     P = set([vertex.index for vertex in input_graph.vs()])
     R = []
     X = set()
@@ -133,17 +129,21 @@ def get_max_clique_bk1(input_graph, timeout_sec=600):
     start = timer()
 
     try:
+        t_clique = []
         for clique in bron_kerbosch1(input_graph, R, P, X):
-            C.append(clique)
-    except TimeOutException:
+            if len(clique) > len(t_clique):
+                C.append(clique)
+                t_clique = clique
+    except Exception:
         print("Timeout!")
 
     end = timer()
-    print(f"BK1 Elapsed time(msec): {(end - start)*1000}")
+    if debug:
+        print(f"BK1 Elapsed time(msec): {(end - start)*1000}")
     max_clique = max(C, key=lambda clique: len(clique))
     return max_clique
 
-def get_max_clique_bk2(input_graph, timeout_sec=600):
+def get_max_clique_bk2(input_graph, debug=False):
     P = set([vertex.index for vertex in input_graph.vs()])
     R = []
     X = set()
@@ -151,13 +151,17 @@ def get_max_clique_bk2(input_graph, timeout_sec=600):
     start = timer()
 
     try:
+        t_clique = []
         for clique in bron_kerbosch2(input_graph, R, P, X):
-            C.append(clique)
-    except TimeOutException:
+            if len(clique) > len(t_clique):
+                C.append(clique)
+                t_clique = clique
+    except Exception:
         print("Timeout!")
 
     end = timer()
-    print(f"BK2 Elapsed time(msec): {(end - start)*1000}")
+    if debug:
+        print(f"BK2 Elapsed time(msec): {(end - start)*1000}")
     max_clique = max(C, key=lambda clique: len(clique))
     return max_clique
 
@@ -178,14 +182,17 @@ def color_similarity(modular_product, max_clique_in_product, graph_candidate_one
     mces_two['color'] = "red"
     mces_one['width'] = 5
     mces_two['width'] = 5
-
+    common_edge_count = 0
     for edge in mces_one:
+        common_edge_count += 1
         graph_candidate_one.vs[edge.source]['color'] = 'blue'
         graph_candidate_one.vs[edge.target]['color'] = 'blue'
 
     for edge in mces_two:
         graph_candidate_two.vs[edge.source]['color'] = 'blue'
         graph_candidate_two.vs[edge.target]['color'] = 'blue'
+
+    return common_edge_count
 
 def visualize_similarity(graph_candidate_one, graph_candidate_two, modular_product, max_clique_in_product, output_filename, debug=False):
     color_similarity(modular_product, max_clique_in_product, graph_candidate_one, graph_candidate_two)
@@ -219,10 +226,13 @@ if __name__ == "__main__":
         print(f"Moduláris szorzatgráf csúcsszáma: {len(MODULAR_PRODUCT_GRAPH.vs)}, átlagos szomszédszám: {mean([len(MODULAR_PRODUCT_GRAPH.neighbors(vertex)) for vertex in MODULAR_PRODUCT_GRAPH.vs])}")
         print("-----------------------------------------------------------------------")
         # signal.alarm(args.timeout)
-        max_clique = get_max_clique_bk2(MODULAR_PRODUCT_GRAPH)
+        # ret1 = timeit.timeit(lambda: get_max_clique_bk1(MODULAR_PRODUCT_GRAPH), number=1)
+        # ret2 = timeit.timeit(lambda: get_max_clique_bk2(MODULAR_PRODUCT_GRAPH), number=1)
+        # print(f"BK1:{ret1}, BK2:{ret2}")
+        max_clique = get_max_clique_bk2(MODULAR_PRODUCT_GRAPH, True)
         print(f"Talált maximum klikk mérete: {len(max_clique)}")
         print("-----------------------------------------------------------------------")
-        visualize_similarity(G, H, MODULAR_PRODUCT_GRAPH, max_clique, output_filename=f"{input_1_filename}-{input_2_filename}_similarity.png")
+        # visualize_similarity(G, H, MODULAR_PRODUCT_GRAPH, max_clique, output_filename=f"{input_1_filename}-{input_2_filename}_similarity.png")
         # layout = MODULAR_PRODUCT_GRAPH.layout('grid')
         # ig.plot(MODULAR_PRODUCT_GRAPH, layout=layout)
 
