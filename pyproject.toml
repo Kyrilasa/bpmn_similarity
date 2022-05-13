@@ -5,7 +5,7 @@ description = "Thesis project, measuring similarity of business process models i
 authors = ["szucsba <szucsbarnabas98@protonmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8,<3.11"
 SpiffWorkflow = "^1.1.6"
 igraph = "^0.9.10"
 networkx = "^2.8"
@@ -13,6 +13,8 @@ pycairo = "^1.21.0"
 matplotlib = "^3.5.1"
 tqdm = "^4.64.0"
 pandas = "^1.4.2"
+opencv-python = "^4.5.5"
+pyinstaller = "^5.0.1"
 
 [tool.poetry.dev-dependencies]
 

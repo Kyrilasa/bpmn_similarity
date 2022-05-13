@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi_1="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_N9f2MbNKEDqiPI9lu_jA-w" targetNamespace="http://www.omg.org/bpmn20" exporter="Camunda Modeler" exporterVersion="5.0.0" camunda:diagramRelationId="ae5743ad-cfa6-41fb-be18-33ef0375762a">
-  <bpmn2:collaboration id="_0FA8AC5F-0EF0-448C-9D45-61F81C524045" name="Default Collaboration">
-    <bpmn2:participant id="_A01CF422-5AA2-4897-915E-B22A596E21DD" name="Pool Participant" processRef="medium_process_11a_6gw" />
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_Z-CUcLONEDq9xIWhg1BVig" targetNamespace="http://www.omg.org/bpmn20" exporter="Camunda Modeler" exporterVersion="5.0.0">
+  <bpmn2:collaboration id="_0BD29379-9AA8-4BC4-ADA1-C372027FE3E9" name="Default Collaboration">
+    <bpmn2:participant id="_1A159C76-02C3-4166-BA0C-8E86B2AA5352" name="Pool Participant" processRef="medium_process_11a_6gw" />
   </bpmn2:collaboration>
   <bpmn2:process id="medium_process_11a_6gw" name="medium_process_11a_6gw" processType="Public" isExecutable="false" drools:packageName="com.example" drools:version="1.0" drools:adHoc="false">
     <bpmn2:sequenceFlow id="element1218-element1220" sourceRef="element1218" targetRef="element1220" />
@@ -11,23 +11,22 @@
     <bpmn2:sequenceFlow id="element1224-element1222" sourceRef="element1224" targetRef="element1222" />
     <bpmn2:sequenceFlow id="element1221-element1224" sourceRef="element1221" targetRef="element1224" />
     <bpmn2:sequenceFlow id="element1221-element1227" sourceRef="element1221" targetRef="element1227" />
-    <bpmn2:sequenceFlow id="element1227-element1228" sourceRef="element1227" targetRef="element1228" />
     <bpmn2:sequenceFlow id="element1230-element1222" sourceRef="element1230" targetRef="element1222" />
-    <bpmn2:sequenceFlow id="element1229-element1230" sourceRef="element1229" targetRef="element1230" />
-    <bpmn2:sequenceFlow id="element1228-element1231" name="dcondition1" sourceRef="element1228" targetRef="element1231">
-      <bpmn2:conditionExpression xsi_1:type="bpmn2:tFormalExpression">dummy_condition</bpmn2:conditionExpression>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="element1232-element1229" sourceRef="element1232" targetRef="element1229" />
+    <bpmn2:sequenceFlow id="_C693725D-C1DA-4121-B434-5856D3014DF5" sourceRef="_0E02ECC4-C41A-422F-B2F4-94BB3D25625D" targetRef="element1230" />
+    <bpmn2:sequenceFlow id="_C1A31FF3-CEC9-4270-84B0-7B5032101C73" sourceRef="element1232" targetRef="_0E02ECC4-C41A-422F-B2F4-94BB3D25625D" />
     <bpmn2:sequenceFlow id="element1231-element1232" sourceRef="element1231" targetRef="element1232" />
-    <bpmn2:sequenceFlow id="element1228-element1236" name="dcondition" sourceRef="element1228" targetRef="element1236">
-      <bpmn2:extensionElements />
-      <bpmn2:conditionExpression xsi_1:type="bpmn2:tFormalExpression">dummy _condition</bpmn2:conditionExpression>
-    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="element1236-element1237" sourceRef="element1236" targetRef="element1237" />
-    <bpmn2:sequenceFlow id="element1239-element1229" sourceRef="element1239" targetRef="element1229" />
+    <bpmn2:sequenceFlow id="_A9BBD515-A2C8-4915-9DEE-090D9445E592" sourceRef="element1239" targetRef="_0E02ECC4-C41A-422F-B2F4-94BB3D25625D" />
     <bpmn2:sequenceFlow id="element1238-element1239" sourceRef="element1238" targetRef="element1239" />
+    <bpmn2:sequenceFlow id="Flow_165axkx" sourceRef="element1240" targetRef="element1238" />
+    <bpmn2:sequenceFlow id="Flow_0eyjng5" sourceRef="element1237" targetRef="element1240" />
     <bpmn2:sequenceFlow id="element1243-element1238" sourceRef="element1243" targetRef="element1238" />
     <bpmn2:sequenceFlow id="element1237-element1243" sourceRef="element1237" targetRef="element1243" />
+    <bpmn2:parallelGateway id="_0E02ECC4-C41A-422F-B2F4-94BB3D25625D" gatewayDirection="Converging">
+      <bpmn2:incoming>_A9BBD515-A2C8-4915-9DEE-090D9445E592</bpmn2:incoming>
+      <bpmn2:incoming>_C1A31FF3-CEC9-4270-84B0-7B5032101C73</bpmn2:incoming>
+      <bpmn2:outgoing>_C693725D-C1DA-4121-B434-5856D3014DF5</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
     <bpmn2:startEvent id="element1218" name="Start">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
@@ -88,26 +87,15 @@
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>element1221-element1227</bpmn2:incoming>
-      <bpmn2:outgoing>element1227-element1228</bpmn2:outgoing>
+      <bpmn2:outgoing>_D61C6993-930E-40A0-AE7B-8AD9B3DD8233</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:exclusiveGateway id="element1228" name="gateway1" gatewayDirection="Diverging">
-      <bpmn2:extensionElements />
-      <bpmn2:incoming>element1227-element1228</bpmn2:incoming>
-      <bpmn2:outgoing>element1228-element1236</bpmn2:outgoing>
-      <bpmn2:outgoing>element1228-element1231</bpmn2:outgoing>
-    </bpmn2:exclusiveGateway>
-    <bpmn2:exclusiveGateway id="element1229" gatewayDirection="Converging">
-      <bpmn2:incoming>element1239-element1229</bpmn2:incoming>
-      <bpmn2:incoming>element1232-element1229</bpmn2:incoming>
-      <bpmn2:outgoing>element1229-element1230</bpmn2:outgoing>
-    </bpmn2:exclusiveGateway>
     <bpmn2:task id="element1230" name="Activity E">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
           <drools:metaValue>Activity E</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>element1229-element1230</bpmn2:incoming>
+      <bpmn2:incoming>_C693725D-C1DA-4121-B434-5856D3014DF5</bpmn2:incoming>
       <bpmn2:outgoing>element1230-element1222</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:task id="element1231" name="Activity F">
@@ -116,7 +104,7 @@
           <drools:metaValue>Activity F</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>element1228-element1231</bpmn2:incoming>
+      <bpmn2:incoming>_EB5FAA16-7878-4547-A08B-C524150406BF</bpmn2:incoming>
       <bpmn2:outgoing>element1231-element1232</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:task id="element1232" name="Activity G">
@@ -126,7 +114,7 @@
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>element1231-element1232</bpmn2:incoming>
-      <bpmn2:outgoing>element1232-element1229</bpmn2:outgoing>
+      <bpmn2:outgoing>_C1A31FF3-CEC9-4270-84B0-7B5032101C73</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:task id="element1236" name="Activity H">
       <bpmn2:extensionElements>
@@ -134,7 +122,7 @@
           <drools:metaValue>Activity H</drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:incoming>element1228-element1236</bpmn2:incoming>
+      <bpmn2:incoming>_4A437E48-6D7D-4291-A976-F989A00E5C06</bpmn2:incoming>
       <bpmn2:outgoing>element1236-element1237</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:parallelGateway id="element1237" gatewayDirection="Diverging">
@@ -154,7 +142,7 @@
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>element1238-element1239</bpmn2:incoming>
-      <bpmn2:outgoing>element1239-element1229</bpmn2:outgoing>
+      <bpmn2:outgoing>_A9BBD515-A2C8-4915-9DEE-090D9445E592</bpmn2:outgoing>
     </bpmn2:task>
     <bpmn2:task id="element1240" name="Activity J">
       <bpmn2:extensionElements>
@@ -174,82 +162,93 @@
       <bpmn2:incoming>element1237-element1243</bpmn2:incoming>
       <bpmn2:outgoing>element1243-element1238</bpmn2:outgoing>
     </bpmn2:task>
-    <bpmn2:sequenceFlow id="Flow_0eyjng5" sourceRef="element1237" targetRef="element1240" />
-    <bpmn2:sequenceFlow id="Flow_165axkx" sourceRef="element1240" targetRef="element1238" />
+    <bpmn2:parallelGateway id="_986634A2-7E29-49EB-BA68-7134524AD808" gatewayDirection="Diverging">
+      <bpmn2:incoming>_D61C6993-930E-40A0-AE7B-8AD9B3DD8233</bpmn2:incoming>
+      <bpmn2:outgoing>_4A437E48-6D7D-4291-A976-F989A00E5C06</bpmn2:outgoing>
+      <bpmn2:outgoing>_EB5FAA16-7878-4547-A08B-C524150406BF</bpmn2:outgoing>
+    </bpmn2:parallelGateway>
+    <bpmn2:sequenceFlow id="_4A437E48-6D7D-4291-A976-F989A00E5C06" sourceRef="_986634A2-7E29-49EB-BA68-7134524AD808" targetRef="element1236">
+      <bpmn2:extensionElements>
+        <drools:metaData name="isAutoConnection.target">
+          <drools:metaValue>true</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_EB5FAA16-7878-4547-A08B-C524150406BF" sourceRef="_986634A2-7E29-49EB-BA68-7134524AD808" targetRef="element1231">
+      <bpmn2:extensionElements>
+        <drools:metaData name="isAutoConnection.target">
+          <drools:metaValue>true</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_D61C6993-930E-40A0-AE7B-8AD9B3DD8233" sourceRef="element1227" targetRef="_986634A2-7E29-49EB-BA68-7134524AD808" />
   </bpmn2:process>
   <bpmndi:BPMNDiagram>
     <bpmndi:BPMNPlane bpmnElement="medium_process_11a_6gw">
-      <bpmndi:BPMNEdge id="Flow_165axkx_di" bpmnElement="Flow_165axkx">
-        <di:waypoint x="1143" y="170" />
-        <di:waypoint x="1163" y="170" />
-        <di:waypoint x="1163" y="160" />
-        <di:waypoint x="1202" y="160" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0eyjng5_di" bpmnElement="Flow_0eyjng5">
-        <di:waypoint x="1002" y="146" />
-        <di:waypoint x="1077" y="167" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_element1237_to_shape_element1243" bpmnElement="element1237-element1243">
-        <di:waypoint x="1000" y="132" />
+        <di:waypoint x="980" y="112" />
+        <di:waypoint x="1024" y="112" />
         <di:waypoint x="1073" y="109" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_element1243_to_shape_element1238" bpmnElement="element1243-element1238">
         <di:waypoint x="1147" y="100" />
         <di:waypoint x="1210" y="100" />
-        <di:waypoint x="1210" y="112" />
+        <di:waypoint x="1216" y="98" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1237_to_shape_element1240" bpmnElement="Flow_0eyjng5">
+        <di:waypoint x="980" y="168" />
+        <di:waypoint x="1077" y="167" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1240_to_shape_element1238" bpmnElement="Flow_165axkx">
+        <di:waypoint x="1143" y="170" />
+        <di:waypoint x="1163" y="170" />
+        <di:waypoint x="1163" y="160" />
+        <di:waypoint x="1208" y="146" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_element1238_to_shape_element1239" bpmnElement="element1238-element1239">
-        <di:waypoint x="1238" y="140" />
-        <di:waypoint x="1289" y="140" />
+        <di:waypoint x="1244" y="126" />
+        <di:waypoint x="1297" y="135" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_element1239_to_shape_element1229" bpmnElement="element1239-element1229">
-        <di:waypoint x="1322" y="154" />
-        <di:waypoint x="1322" y="192" />
+      <bpmndi:BPMNEdge id="edge_shape_element1239_to_shape__0E02ECC4-C41A-422F-B2F4-94BB3D25625D" bpmnElement="_A9BBD515-A2C8-4915-9DEE-090D9445E592">
+        <di:waypoint x="1330" y="149" />
+        <di:waypoint x="1330" y="186" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_element1236_to_shape_element1237" bpmnElement="element1236-element1237">
         <di:waypoint x="907" y="140" />
         <di:waypoint x="952" y="140" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_element1228_to_shape_element1236" bpmnElement="element1228-element1236">
-        <di:waypoint x="680" y="152" />
-        <di:waypoint x="680" y="140" />
+      <bpmndi:BPMNEdge id="edge_shape__986634A2-7E29-49EB-BA68-7134524AD808_to_shape_element1236" bpmnElement="_4A437E48-6D7D-4291-A976-F989A00E5C06">
+        <di:waypoint x="672" y="156" />
         <di:waypoint x="832" y="140" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="670" y="143" width="51" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_element1231_to_shape_element1232" bpmnElement="element1231-element1232">
         <di:waypoint x="803" y="220" />
         <di:waypoint x="866" y="220" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_element1232_to_shape_element1229" bpmnElement="element1232-element1229">
-        <di:waypoint x="941" y="220" />
-        <di:waypoint x="1294" y="220" />
+      <bpmndi:BPMNEdge id="edge_shape_element1232_to_shape__0E02ECC4-C41A-422F-B2F4-94BB3D25625D" bpmnElement="_C1A31FF3-CEC9-4270-84B0-7B5032101C73">
+        <di:waypoint x="903.5" y="220" />
+        <di:waypoint x="1302" y="214" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_element1228_to_shape_element1231" bpmnElement="element1228-element1231">
-        <di:waypoint x="680" y="208" />
-        <di:waypoint x="680" y="220" />
+      <bpmndi:BPMNEdge id="edge_shape__986634A2-7E29-49EB-BA68-7134524AD808_to_shape_element1231" bpmnElement="_EB5FAA16-7878-4547-A08B-C524150406BF">
+        <di:waypoint x="672" y="156" />
         <di:waypoint x="737" y="220" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="667" y="211" width="57" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_element1229_to_shape_element1230" bpmnElement="element1229-element1230">
-        <di:waypoint x="1350" y="220" />
+      <bpmndi:BPMNEdge id="edge_shape__0E02ECC4-C41A-422F-B2F4-94BB3D25625D_to_shape_element1230" bpmnElement="_C693725D-C1DA-4121-B434-5856D3014DF5">
+        <di:waypoint x="1330" y="214" />
         <di:waypoint x="1412" y="220" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_element1230_to_shape_element1222" bpmnElement="element1230-element1222">
         <di:waypoint x="1487" y="220" />
         <di:waypoint x="1562" y="220" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape_element1227_to_shape_element1228" bpmnElement="element1227-element1228">
-        <di:waypoint x="587" y="180" />
-        <di:waypoint x="652" y="180" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_element1221_to_shape_element1227" bpmnElement="element1221-element1227">
         <di:waypoint x="450" y="192" />
         <di:waypoint x="450" y="180" />
         <di:waypoint x="512" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_element1227_to_shape__986634A2-7E29-49EB-BA68-7134524AD808" bpmnElement="_D61C6993-930E-40A0-AE7B-8AD9B3DD8233">
+        <di:waypoint x="587" y="180" />
+        <di:waypoint x="644" y="156" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape_element1221_to_shape_element1224" bpmnElement="element1221-element1224">
         <di:waypoint x="450" y="248" />
@@ -277,17 +276,17 @@
         <di:waypoint x="213" y="220" />
         <di:waypoint x="277" y="220" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="shape__0E02ECC4-C41A-422F-B2F4-94BB3D25625D" bpmnElement="_0E02ECC4-C41A-422F-B2F4-94BB3D25625D">
+        <dc:Bounds x="1302" y="186" width="56" height="56" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__986634A2-7E29-49EB-BA68-7134524AD808" bpmnElement="_986634A2-7E29-49EB-BA68-7134524AD808">
+        <dc:Bounds x="644" y="128" width="56" height="56" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_element1218" bpmnElement="element1218">
         <dc:Bounds x="157" y="192" width="56" height="56" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="173" y="248" width="24" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_element1219" bpmnElement="element1219">
         <dc:Bounds x="1872" y="192" width="56" height="56" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1890" y="258" width="20" height="14" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_element1220" bpmnElement="element1220">
         <dc:Bounds x="277" y="206" width="75" height="28" />
@@ -307,15 +306,6 @@
       <bpmndi:BPMNShape id="shape_element1227" bpmnElement="element1227">
         <dc:Bounds x="512" y="166" width="75" height="28" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_element1228" bpmnElement="element1228" isMarkerVisible="true">
-        <dc:Bounds x="652" y="152" width="56" height="56" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="739" y="170" width="48" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_element1229" bpmnElement="element1229" isMarkerVisible="true">
-        <dc:Bounds x="1294" y="192" width="56" height="56" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_element1230" bpmnElement="element1230">
         <dc:Bounds x="1412" y="206" width="75" height="28" />
       </bpmndi:BPMNShape>
@@ -332,10 +322,10 @@
         <dc:Bounds x="952" y="112" width="56" height="56" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_element1238" bpmnElement="element1238">
-        <dc:Bounds x="1182" y="112" width="56" height="56" />
+        <dc:Bounds x="1188" y="98" width="56" height="56" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_element1239" bpmnElement="element1239">
-        <dc:Bounds x="1289" y="126" width="66" height="28" />
+        <dc:Bounds x="1297" y="121" width="66" height="28" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_element1240" bpmnElement="element1240">
         <dc:Bounds x="1077" y="156" width="66" height="28" />
@@ -580,7 +570,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_N9f2MbNKEDqiPI9lu_jA-w</bpmn2:source>
-    <bpmn2:target>_N9f2MbNKEDqiPI9lu_jA-w</bpmn2:target>
+    <bpmn2:source>_Z-CUcLONEDq9xIWhg1BVig</bpmn2:source>
+    <bpmn2:target>_Z-CUcLONEDq9xIWhg1BVig</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
