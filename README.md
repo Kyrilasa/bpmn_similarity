@@ -1,6 +1,5 @@
 # bpmn_similarity
-Thesis project
-
+Project to analyze business process model's similarity.
 ## Poetry python package manager
 https://python-poetry.org/docs/
 
